@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersist from 'vuex-persist';
-
 Vue.use(Vuex);
 const vuexLocalStorage = new VuexPersist({
   key: 'vuex', // The key to store the state on in the storage provider.
@@ -15,23 +14,22 @@ export const MUTATIONS = {
   "SET_USER": "setUser",
   "SET_USER_JWT": "setUserJwt"
 };
-
 export default new Vuex.Store({
   state: {
     session_jwt: '',
     session_username: ''
   },
   mutations: {
-    [MUTATIONS.SET_USER_JWT](state, payload) {
+    [MUTATIONS.SET_USER_JWT](state:any, payload:any) {
       console.log('TRACE: In Store: setting session_jwt to', payload)
       //Vue.set(state, 'session_jwt', payload);
-      this.session_jwt = payload;
+      state.session_jwt = payload;
       console.log('TRACE: In Store: new value for session_jwt', this.session_jwt)
     },
-    [MUTATIONS.SET_USER](state, payload) {
+    [MUTATIONS.SET_USER](state:any, payload:any) {
       console.log('TRACE: In Store: setting session_username to', payload)
       //Vue.set(state, 'session_username', payload);
-      this.session_username = payload;
+      state.session_username = payload;
       console.log('TRACE: In Store: new value for session_username', this.session_username)
     }
   },
