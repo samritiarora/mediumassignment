@@ -94,7 +94,7 @@ export default class CommentCt extends Vue {
       )
       .then(response => {
         console.log(response);
-        console.log("Info: In Hello World --  got articles response", response);
+        console.log("Info: In Comment Component --  got comment response", response);
         //this.$forceUpdate();
         this.$emit("deleteOwnComment");
       });

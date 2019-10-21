@@ -39,14 +39,11 @@
             </div>
           </b-form-group>
 
-          <b-button type="submit" variant="primary">Submit</b-button>&nbsp; &nbsp;
-          <b-button type="reset" variant="danger">Reset</b-button>
+          <b-button type="submit" variant="primary">Submit</b-button>&nbsp;<b-button type="reset" variant="danger">Reset</b-button>
         </b-form>
       </b-row>
       <b-row>
-        <b-card class="mt-3" header="Form Data Result">
-          <pre class="m-0">{{ form }}</pre>
-        </b-card>
+        
         <div v-if="errored">
           <b-alert show variant="danger">
             <li v-for="(k,v) in errors">{{k}}</li>
@@ -90,8 +87,8 @@ export default class LoggIn extends Vue {
       .post("https://conduit.productionready.io/api/users/login", this.form)
       .then(response => {
         this.info = "You have successfully logged in";
-        console.log("success*****", this.info);
-        console.log("success*****response=", response);
+        console.log("success login*****", this.info);
+        console.log("success login*****response=", response);
         console.log("setting session=", response.data.user.token);
         this.setSession(response.data.user.token, response.data.user.username);
         this.errored = false;
@@ -101,7 +98,7 @@ export default class LoggIn extends Vue {
         this.$router.push({ name: "home" });
       })
       .catch(error => {
-        console.log("error******" + error);
+        console.log("Error while logging in******" + error);
         this.errored = true;
         this.errors = error.response.data;
       })

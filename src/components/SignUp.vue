@@ -60,9 +60,7 @@
         </b-form>
       </b-row>
       <b-row>
-        <b-card class="mt-3" header="Form Data Result">
-          <pre class="m-0">{{ form }}</pre>
-        </b-card>
+        
         <div v-if="info">
           <b-alert show variant="success">
             <h4>{{info}}</h4>
@@ -94,7 +92,6 @@ export default class SignUp extends Vue {
   loading: boolean = false;
 
   setSession(token: any, username: any) {
-    //store.state.count++; //works, but with strict true we have an error
     store.commit(MUTATIONS.SET_USER_JWT, token);
     store.commit(MUTATIONS.SET_USER, username);
   }
@@ -107,7 +104,7 @@ export default class SignUp extends Vue {
       .post("https://conduit.productionready.io/api/users", this.form)
       .then(response => {
         this.info = "You have successfully registered";
-        console.log("success*****" + this.info);
+        console.log("success sign up*****" + this.info);
         this.errored = false;
         this.form.user.email = "";
         this.form.user.username = "";
@@ -121,7 +118,7 @@ export default class SignUp extends Vue {
         this.$router.push({ name: "home" });
       })
       .catch(error => {
-        console.log("error******" + error);
+        console.log("error occured sign up******" + error);
         this.errored = true;
         this.errors = error.response.data;
       })

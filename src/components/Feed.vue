@@ -90,7 +90,7 @@ export default class Feed extends Vue {
       )
       .then(response => {
         console.log(response);
-        console.log("Info: In Hello World --  got articles response", response);
+        console.log("Info: In Feed Component --  got feed response", response);
         this.$emit("deleteOwnArticle");
       });
   }

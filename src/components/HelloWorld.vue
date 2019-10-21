@@ -3,7 +3,7 @@
     <div class="container">
       <b-tabs content-class="mt-3">
         <b-tab title="Global Feed" active>
-          <h1 class="display-4">Global Feed</h1>
+          <h2 class="display-4">Global Feed</h2>
           <!-- <div class="row"> -->
             <!-- <div class="col-md-12"> -->
               <li v-for="item in globalFeed" style="width: 100%; height:50px">
@@ -24,7 +24,7 @@
         </b-tab>
         <div v-if="token">
           <b-tab title="Your Feed">
-            <h1 class="display-4">Your Feed</h1>
+            <h2 class="display-4">Your Feed</h2>
            
                 <li v-for="item in myFeed"  style="width: 100%; height:50%">
                   <Feed :feedItem="item" v-on:deleteOwnArticle="getMyFeedData"/>
@@ -80,24 +80,6 @@ export default class HelloWorld extends Vue {
     let todos = this.$store.state.session_jwt;
     return todos;
   }
-  // mounted() {
-  //   console.log("Trace: In Hello World --  mounting");
-  //   this.loading = true;
-  //   axios
-  //     .get("https://conduit.productionready.io/api/articles")
-  //     .then(response => {
-  //       console.log("Info: In Hello World --  got articles response", response);
-  //       this.globalFeed = response.data.articles;
-  //       this.rows = response.data.articlesCount;
-  //     })
-  //     .catch(error => {
-  //       console.log("error******" + error);
-  //       this.errored = true;
-  //       this.errors = error.response.data;
-  //     })
-  //     .finally(() => (this.loading = false));
-  // }
-
   getGlobalFeedData(currentPage: number) {
     axios
       .get(
@@ -114,7 +96,7 @@ export default class HelloWorld extends Vue {
       })
       .catch(e => {
         this.errors.push(e);
-        console.log("error******" + e);
+        console.log("Error: In Hello World" + e);
         this.errored = true;
         //       this.errors = error.response.data;
       });
@@ -141,7 +123,7 @@ export default class HelloWorld extends Vue {
       })
       .catch(e => {
         this.errors.push(e);
-        console.log("error******" + e);
+        console.log("Error in Hello World Component" + e);
         this.errored = true;
         //       this.errors = error.response.data;
       });
