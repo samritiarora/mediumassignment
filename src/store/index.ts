@@ -24,13 +24,13 @@ export default new Vuex.Store({
   mutations: {
     [MUTATIONS.SET_USER_JWT](state, payload) {
       console.log('TRACE: In Store: setting session_jwt to', payload)
-      Vue.set(state, 'session_jwt', payload);
+      //Vue.set(state, 'session_jwt', payload);
       this.session_jwt = payload;
       console.log('TRACE: In Store: new value for session_jwt', this.session_jwt)
     },
     [MUTATIONS.SET_USER](state, payload) {
       console.log('TRACE: In Store: setting session_username to', payload)
-      Vue.set(state, 'session_username', payload);
+      //Vue.set(state, 'session_username', payload);
       this.session_username = payload;
       console.log('TRACE: In Store: new value for session_username', this.session_username)
     }
